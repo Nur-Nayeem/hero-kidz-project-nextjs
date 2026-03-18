@@ -12,7 +12,7 @@ const Banner = () => {
         <p>Grab the best toys for your kids at amazing prices.</p>
         <button className="btn btn-primary btn-outline">Expore Products</button>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 flex justify-center">
         <Image
           src={"/assets/hero.png"}
           alt="Grab the best toys for your kids at amazing prices. Limited time
