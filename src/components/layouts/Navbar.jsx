@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import NavLink from "../buttons/NavLink";
 import Link from "next/link";
 import { BsCart3 } from "react-icons/bs";
+import AuthButtons from "../buttons/AuthButtons";
 
 const Navbar = () => {
   const nav = (
@@ -60,9 +61,7 @@ const Navbar = () => {
           <BsCart3 className="text-lg" />
         </Link>
 
-        <Link href={"/login"} className="btn btn-primary btn-outline">
-          Login
-        </Link>
+        <AuthButtons />
       </div>
     </div>
   );
