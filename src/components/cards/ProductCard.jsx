@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
+import CartButton from "../buttons/CartButton";
 
 const ProductCard = ({ product }) => {
   const discountPrice =
@@ -67,10 +68,11 @@ const ProductCard = ({ product }) => {
         >
           View Details
         </Link>
-        <button className="btn btn-primary btn-sm mt-2 w-full md:py-5">
+        {/* <button className="btn btn-primary btn-sm mt-2 w-full md:py-5">
           <FaShoppingCart />
           Add to Cart
-        </button>
+        </button> */}
+        <CartButton product={product} />
       </div>
     </div>
   );

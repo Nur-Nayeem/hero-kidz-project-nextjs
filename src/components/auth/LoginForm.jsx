@@ -10,7 +10,7 @@ import SocialButton from "../buttons/SocialButton";
 
 export default function LoginForm() {
   const params = useSearchParams();
-  const callBack = params.get("callbackUrl") || "";
+  const callBack = params.get("callbackUrl") || "/";
   const router = useRouter();
   const [form, setForm] = useState({
     email: "",
@@ -27,7 +27,7 @@ export default function LoginForm() {
       redirect: false,
       email: form.email,
       password: form.password,
-      callbackUrl: params.get("callbackUrl") || "/",
+      // callbackUrl: params.get("callbackUrl") || "/",
     });
     console.log(result);
 
