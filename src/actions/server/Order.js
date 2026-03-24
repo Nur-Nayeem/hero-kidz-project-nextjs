@@ -3,10 +3,10 @@
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { clearCart, getCart } from "./cart";
-// import { sendEmail } from "@/lib/sendEmail";
-// import { orderInvoiceTemplate } from "@/lib/orderInvoice";
+import { sendEmail } from "@/lib/sendEmail";
+import { orderInvoiceTemplate } from "@/lib/orderInvoice";
 import { ObjectId } from "mongodb";
-// import { adminOrderNotificationTemplate } from "@/lib/AdminInvoice";
+import { adminOrderNotificationTemplate } from "@/lib/AdminInvoice";
 
 const { dbConnect, collections } = require("@/lib/dbConnect");
 
@@ -43,30 +43,30 @@ export const createOrder = async (payload) => {
     const result = await clearCart();
   }
 
-  //   await sendEmail({
-  //     to: user.email,
-  //     subject: "🎉Your Order Invoice - Hero Kidz",
-  //     html: orderInvoiceTemplate({
-  //       orderId: result.insertedId.toString(),
-  //       items: cart,
-  //       totalPrice,
-  //     }),
-  //   });
+  await sendEmail({
+    to: user.email,
+    subject: "🎉Your Order Invoice - Hero Kidz",
+    html: orderInvoiceTemplate({
+      orderId: result.insertedId.toString(),
+      items: cart,
+      totalPrice,
+    }),
+  });
 
-  //   await sendEmail({
-  //     to: "ferdouszihad.ph@gmail.com",
-  //     subject: "Congrates🔥. New Sell  from Hero Kidz",
-  //     html: adminOrderNotificationTemplate({
-  //       orderId: result.insertedId.toString(),
-  //       items: cart,
-  //       totalPrice,
-  //       address: payload.address,
-  //       contact: payload.contact,
-  //       name: user.name,
-  //       email: user.email,
-  //       instruction: payload?.instruction || "",
-  //     }),
-  //   });
+  await sendEmail({
+    to: "nurnayem082@gmail.com",
+    subject: "Congrates🔥. New Sell  from Hero Kidz",
+    html: adminOrderNotificationTemplate({
+      orderId: result.insertedId.toString(),
+      items: cart,
+      totalPrice,
+      address: payload.address,
+      contact: payload.contact,
+      name: user.name,
+      email: user.email,
+      instruction: payload?.instruction || "",
+    }),
+  });
 
   return {
     success: result.insertedId,
