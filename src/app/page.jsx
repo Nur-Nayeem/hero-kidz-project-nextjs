@@ -5,11 +5,8 @@ import Test from "@/Test";
 import { getServerSession } from "next-auth";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
   return (
     <div className="space-y-20">
-      clinet: <Test />
-      server: <p>{JSON.stringify(session)}</p>
       <section>
         <Banner />
       </section>
